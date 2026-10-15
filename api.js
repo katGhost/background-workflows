@@ -1,7 +1,7 @@
 import express from "express";
 import { serve } from "inngest/express";
 import { inngest } from "./src/inngest/client.js";
-import { sayHello, makeReport } from "./src/inngest/functions.js";
+import { sayHello, makeReport, heartbeat } from "./src/inngest/functions.js";
 import { v4 as uuid4 } from "uuid";
 
 
@@ -15,7 +15,7 @@ export const app = express();
 app.use(express.json());
 app.use('/api/inngest', serve({
   client: inngest,
-  functions: [sayHello, makeReport],
+  functions: [sayHello, makeReport, heartbeat],
 }));
 
 

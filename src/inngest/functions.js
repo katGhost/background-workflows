@@ -10,7 +10,6 @@ export const sayHello = inngest.createFunction(
 );
 
 export const makeReport = inngest.createFunction(
-
   { id: "make-report", triggers: [{ event: "report/requested" }], retries: 2 },
 
   async ({ event, step }) => {
@@ -36,5 +35,17 @@ export const makeReport = inngest.createFunction(
       return report;
     });
     return result;
+  },
+);
+
+// heartbeat function
+export const heartbeat = inngest.createFunction(
+  { id: "heartbeat", triggers: [{ cron: "* * * * *" }] },
+  async () => {
+    const done = inMemDB.filter((r) => r.status === "done").length;
+    const pending = inMemDB.filter((r) => r.status === "pending").length;
+    const failed = inMemDB.filter((r) => r.status === "failed").length;
+
+    console.log(`done: ${done}, pending: ${pending}, failed: ${failed}`);
   },
 );
