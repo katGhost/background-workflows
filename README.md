@@ -1,7 +1,6 @@
 # Background Workflows — FlyRank Internship · Week 4 · A7
 
-A small Express API that demonstrates the background job pattern:
-accept fast, work in the background, report status.
+A small Express API that demonstrates the background job pattern: accept fast, work in the background, report status.
 
 ---
 
@@ -43,7 +42,22 @@ Inngest dashboard: http://localhost:8288
 
 ## Proof — 202 then poll
 
-[PASTE YOUR CURL OUTPUT HERE — POST response + two polls showing pending then done]
+```bash
+$ time curl -i -X POST http://localhost:3000/reports -H "Content-Type: application/json" -d '{"topic":"cats"}'
+HTTP/1.1 202 Accepted
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 64
+ETag: W/"40-lx1LtsXnmWE3/45jhW9H40wD1d0"
+Date: Thu, 15 Oct 2026 11:39:18 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":"86d3988b-f541-4687-86f3-7250a53bda1d","status":"pending"}
+real    0m0.213s
+user    0m0.031s
+sys     0m0.030s
+```
 
 ---
 
