@@ -69,6 +69,4 @@ Every Sunday at 22:00 UTC: `0 22 * * 0`
 
 ## Author
 
-```HTML5
-<h1>AN Mogashoa **CS50AI Student**</h1>
-```
+AN Mogashoa **CS50AI Student** @2026
