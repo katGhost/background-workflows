@@ -19,7 +19,7 @@ pnpm dev
 pnpm dlx inngest-cli@latest dev -u http://localhost:3000/api/inngest
 ```
 
-Inngest dashboard: !['Inngest localhost URL'](http://localhost:8288)
+Inngest dashboard: http://localhost:8288
 
 ---
 
