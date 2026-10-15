@@ -43,6 +43,16 @@ app.post('/reports', async (req, res, next) => {
   res.status(202).json({ id, status: 'pending' });
 });
 
+// Get all reports list
+app.get('/reports', async (req, res, next) => {
+  try {
+    return res.status(201).json(inMemDB)
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({error: "Internal server error"});
+  }
+})
+
 // reports status endpoint
 app.get('/reports/:id', async (req, res, next) => {
   const { id } = req.params;
