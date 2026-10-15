@@ -54,7 +54,7 @@ app.get('/reports/:id', async (req, res, next) => {
     return res.status(404).json({ error: 'Report not found' });
   }
 
-  // Valiadte id
+  // Validate id
   if (!report.id || report.id !== id) {
     return res.status(404).json({ error: `Report for ${id} not found` });
   }

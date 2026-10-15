@@ -10,10 +10,17 @@ export const sayHello = inngest.createFunction(
 );
 
 export const makeReport = inngest.createFunction(
-  { id: "make-report", triggers: [{ event: "report/requested" }] },
+
+  { id: "make-report", triggers: [{ event: "report/requested" }], retries: 2 },
 
   async ({ event, step }) => {
     await step.sleep("do-the-slow-work", "8s");
+
+    // fail step
+    if (event.data.topic === "fail") {
+      throw new Error("The report oven is broken!");
+    }
+
     const result = await step.run("build-report", () => {
 
       //  Find existing record first -> then update that record's status/data
